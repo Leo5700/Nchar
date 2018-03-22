@@ -1,6 +1,6 @@
 NUMCHAR
 =======
-Скрипт `python 3.5` для автоматизации метода цифро-буквенного кодирования
+Скрипт `python 3.x` для автоматизации метода цифро-буквенного кодирования
 
 ![alt text](https://github.com/Leo5700/numchar/blob/master/animation.gif "preview")
 
