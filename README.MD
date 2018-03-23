@@ -34,4 +34,4 @@ NUMCHAR
 Из слов, содержащих в себе данные согласные в начале слова, можно составить фразу "ГеоГРаф ГЛобус ПРопил". Или "КуКуРузу ГЛожет БуРжуин". Или "аККоРдеон на КЛадбище -- ПРедвестник приключений".
 
 3. 
-Вот, собственно говоря, и всё. Используйте `numchar.py` и `dictionary.txt`. Для запуска скрипта на устройствах Android применяйте [qpython](https://play.google.com/store/apps/details?id=org.qpython.qpy3&hl=ru "play.google.com").
+Вот, собственно говоря, и всё. Используйте `numchar.py` и `dictionary.txt`. Для запуска скрипта на устройствах Android применяйте [QPython3](https://play.google.com/store/apps/details?id=org.qpython.qpy3&hl=ru "play.google.com").
