@@ -1,0 +1,7 @@
+git clone https://github.com/Leo5700/numchar.git
+cd numchar
+
+git pull origin
+git add .
+git commit -a -m "my comment"
+git push -u origin master
