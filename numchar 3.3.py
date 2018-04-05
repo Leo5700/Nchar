@@ -66,7 +66,7 @@ if inputstr == 'test':
         if wordscount == 0:
             emptycombs.append((i, selectWordsByKey(i, key, dictionary)[1]))
             print(emptycombs[-1])
-    print('Код не покрывает', len(emptycombs), 'из', len(testnumbers), 'чисел от 0 до 1000test')
+    print('Код не покрывает', len(emptycombs), 'из', len(testnumbers), 'чисел от 0 до 1000')
     raise Exception('Закончено')
 
 
