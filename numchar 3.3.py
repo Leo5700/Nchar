@@ -23,16 +23,12 @@ def selectWordsByKey(number, key, dictionary):
     '''
     Выбираем слова в соответствии с кодом
     '''
-
     if len(str(number)) > 4:
         print('Это может быть долго, если что, грохните терминал')
-
     chars = []
     for n in str(number):
         chars.append(key[int(n)])
-
     charCombs = set(itertools.product(*chars))
-
     selectedWords = []
     for word in dictionary:
         wordSogl = re.sub('[оиаыюяэёуе]', '', word.lower())
@@ -41,7 +37,6 @@ def selectWordsByKey(number, key, dictionary):
             stringCharComb = ''.join(charComb)
             if wordSogl[:len(stringCharComb)] == stringCharComb:
                 selectedWords.append(word)
-
     return selectedWords, chars
 
 
@@ -50,39 +45,35 @@ def selectWordsByKey(number, key, dictionary):
 for i in range(len(key)):
     print(i, key[i])
 
-#while True:
+while True:
+    print('-' * 80)
+    print('Введите числа')
+    inputstr = input()
 
+    # Тестовый режим:
+    if inputstr == 'test':
+        testnumbers = range(0, 1000)
+        emptycombs = []
+        for i in testnumbers:
+            wordscount = len(selectWordsByKey(i, key, dictionary)[0])
+            if wordscount == 0:
+                emptycombs.append((i, selectWordsByKey(i, key, dictionary)[1]))
+                print(emptycombs[-1])
+        print('Код не покрывает', len(emptycombs), 'из', len(testnumbers),
+              'чисел от 0 до 1000')
+#        raise Exception('Закончено')
+        break
 
+    # Собственно, кодирование:
+    numbers = re.findall('[0-9]+', inputstr)
+    numbers = list(filter(lambda x: x != '', numbers))
 
-print('-' * 80)
-print('Введите числа')
-inputstr = input()
-
-if inputstr == 'test':
-    testnumbers = range(0, 1000)
-    emptycombs = []
-    for i in testnumbers:
-        wordscount = len(selectWordsByKey(i, key, dictionary)[0])
-        if wordscount == 0:
-            emptycombs.append((i, selectWordsByKey(i, key, dictionary)[1]))
-            print(emptycombs[-1])
-    print('Код не покрывает', len(emptycombs), 'из', len(testnumbers), 'чисел от 0 до 1000')
-    raise Exception('Закончено')
-
-
-
-numbers = re.findall('[0-9]+', inputstr)
-numbers = list(filter(lambda x: x != '', numbers))
-
-
-
-for number in numbers:
+    for number in numbers:
+        print()
+        selectedWords = selectWordsByKey(number, key, dictionary)[0]
+        if not selectedWords:
+            print('Похоже, у меня нет подходящих слов')
+        else:
+            print(number)
+            print(', '.join(selectedWords))
     print()
-    selectedWords = selectWordsByKey(number, key, dictionary)[0]
-    if not selectedWords:
-        print('Похоже, у меня нет подходящих слов')
-    else:
-        print(number)
-        print(', '.join(selectedWords))
-
-print()

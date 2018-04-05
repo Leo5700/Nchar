@@ -1,9 +1,8 @@
 
-180321 Памятка по git
-git pull origin
-git add .
-git commit -a -m "new comment"
-git push -u origin master
+925 519 16 65
+новичок-шпион постоянно сохраняется
+
+TODO докинуть в словарь глаголов
 
 
 180316-1802 TODO 

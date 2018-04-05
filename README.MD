@@ -35,3 +35,5 @@ NUMCHAR
 
 3. 
 Вот, собственно говоря, и всё. Используйте `numchar.py` и `dictionary.txt`. Для запуска скрипта на устройствах Android применяйте [QPython3](https://play.google.com/store/apps/details?id=org.qpython.qpy3&hl=ru "play.google.com").
+
+Примечание: если вместо числа вбить слово `test`, скрипт проверит словарь на полноту охвата чисел от 0 до 1000.
