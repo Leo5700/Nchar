@@ -3,5 +3,5 @@ cd numchar
 
 git pull origin
 git add .
-git commit -a -m "my comment"
-git push -u origin master
+git commit -a -m "my comment" (--amend)
+git push -u origin master (--force)
