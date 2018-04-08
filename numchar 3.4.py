@@ -21,6 +21,7 @@ dictPath = os.path.join(os.path.dirname(os.path.realpath(__file__)), dictName)
 with open(dictPath, 'r', encoding='utf') as file:
     for word in file.readlines():
         dictionary.append(''.join(word.split()))
+# TODO исключить из dictionary дубликаты, отдарая предпочтение словам с большой буквы
 
 
 def selectWordsByKey(number, key, dictionary):
