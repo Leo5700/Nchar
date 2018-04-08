@@ -116,6 +116,7 @@ while True:
             print('Похоже, у меня нет подходящих слов')
         else:
             print(number)
+            selectedWords.sort()
             print(', '.join(selectedWords))
 
     print()
