@@ -36,4 +36,4 @@ NUMCHAR
 3. 
 Вот, собственно говоря, и всё. Используйте `numchar.py` и `dictionary.txt`. Для запуска скрипта на устройствах Android применяйте [QPython3](https://play.google.com/store/apps/details?id=org.qpython.qpy3&hl=ru "play.google.com").
 
-Примечание: если вместо числа вбить слово `test`, скрипт проверит словарь покажет [частотность](https://ru.wikipedia.org/wiki/Частотность "freqresearch") словаря, а также, проверит его на полноту охвата чисел от 0 до 1000.
+Примечание: если вместо числа вбить слово `test`, скрипт [покажет частотность ключа](https://github.com/Leo5700/numchar/blob/master/freqresearch.md "freqresearch"), а также, проверит ключ на полноту охвата чисел от 0 до 1000.

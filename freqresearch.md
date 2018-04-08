@@ -1,91 +1,106 @@
-Частотность: http://dict.ruslang.ru/freq.php?act=show&dic=freq_letters&title=%D7%E0%F1%F2%EE%F2%ED%EE%F1%F2%FC%20%E1%F3%EA%E2%20%F0%F3%F1%F1%EA%EE%E3%EE%20%E0%EB%F4%E0%E2%E8%F2%E0
+Частотный словарь: [https://ru.wikipedia.org/wiki...](https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%81%D1%82%D0%BE%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
 
-
+-----
+Numchar:
+```python
 key = ['р', 'бп', 'вф', 'гк', 'дт', 'жшщхцч', 'зс', 'л', 'м', 'н']
-р        ####
+р        #####
 бп       ####
-вф       ####
+вф       #####
 гк       #####
-дт       ########
-жшщхцч   ####
-зс       ######
+дт       #########
+жшщхцч   #####
+зс       #######
 л        ####
 м        ###
-н        ######
+н        #######
 Код не покрывает 79 из 1000 чисел от 0 до 1000
-
-
-http://upgradememory.ru/pg/tablica_cifro-bukvennogo_koda.htm
+```
+-----
+[http://upgradememory.ru/pg...](http://upgradememory.ru/pg/tablica_cifro-bukvennogo_koda.htm)
+```python
 key = ['нм', 'гж', 'дт', 'кх', 'чщ', 'пб', 'шл', 'сз', 'вф', 'рц']
-нм       #########
-гж       ##
-дт       ########
+нм       ##########
+гж       ###
+дт       #########
 кх       ####
 чщ       ##
 пб       ####
 шл       #####
-сз       ######
-вф       ####
+сз       #######
+вф       #####
 рц       #####
 Код не покрывает 115 из 1000 чисел от 0 до 1000
+```
 
+-----
 
-http://ogrik2.ru/b/ekaterina-sergeevna-dodonova/100-pamyat/28728/cifro-bukvennyj-kod-cbk/61
+[http://ogrik2.ru/b/ekaterina...](http://ogrik2.ru/b/ekaterina-sergeevna-dodonova/100-pamyat/28728/cifro-bukvennyj-kod-cbk/61)
+```python
 key = ['нл', 'рц', 'дг', 'тз', 'чкх', 'пб', 'шжщ', 'с', 'вф', 'м']
-нл       ##########
+нл       ###########
 рц       #####
-дг       ####
-тз       #######
-чкх      #####
+дг       #####
+тз       ########
+чкх      ######
 пб       ####
 шжщ      ##
 с        #####
-вф       ####
+вф       #####
 м        ###
 Код не покрывает 100 из 1000 чисел от 0 до 1000
+```
 
+-----
 
-https://habrahabr.ru/post/179397/
+[https://habrahabr.ru/post/...](https://habrahabr.ru/post/179397/)
+```python
 key = ['нл', 'ф', 'д', 'тр', 'чк', 'п', 'шщ', 'с', 'в', 'бм']
-нл       ##########
-ф
+нл       ###########
+ф        
 д        ###
-тр       ##########
-чк       ####
+тр       ###########
+чк       #####
 п        ###
 шщ       #
 с        #####
-в        ####
-бм       ####
+в        #####
+бм       #####
 Код не покрывает 292 из 1000 чисел от 0 до 1000
+```
 
+-----
 
-https://golos.io/ru--pamyatx/@sniezka/tekhnika-zapominaniya-chisel-cifro-bukvennyi-kod
+[https://golos.io/ru--pamyat...](https://golos.io/ru--pamyatx/@sniezka/tekhnika-zapominaniya-chisel-cifro-bukvennyi-kod)
+```python
 key = ['н', 'кх', 'лмр', 'т', 'чг', 'п', 'шж', 'с', 'вб', 'дз']
-н        ######
+н        #######
 кх       ####
-лмр      ###########
+лмр      ############
 т        ######
 чг       ###
 п        ###
 шж       ##
 с        #####
 вб       ######
-дз       ####
+дз       #####
 Код не покрывает 133 из 1000 чисел от 0 до 1000
+```
 
+-----
 
-http://expertmemory.ru/2013/04/30/%D1%86%D0%B8%D1%84%D1%80%D0%BE-%D0%B1%D1%83%D0%BA%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%B4-%D0%B4%D0%BB%D1%8F-%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F-%D1%86/
+[http://expertmemory.ru/201...](http://expertmemory.ru/2013/04/30/%D1%86%D0%B8%D1%84%D1%80%D0%BE-%D0%B1%D1%83%D0%BA%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%B4-%D0%B4%D0%BB%D1%8F-%D0%B7%D0%B0%D0%BF%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F-%D1%86/)
+```python
 key = ['л', 'н', 'вф', 'р', 'ч', 'пб', 'шжщ', 'сз', 'м', 'дт']
 л        ####
-н        ######
-вф       ####
-р        ####
+н        #######
+вф       #####
+р        #####
 ч        #
 пб       ####
 шжщ      ##
-сз       ######
+сз       #######
 м        ###
-дт       ########
+дт       #########
 Код не покрывает 208 из 1000 чисел от 0 до 1000
-
+```
