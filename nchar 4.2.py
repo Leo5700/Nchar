@@ -1,8 +1,10 @@
-# Python: 3.5
+#!/usr/bin/env python3
+
 
 import os
 import itertools
 import re
+import random
 
 
 key = ['р', 'бп', 'вф', 'гк', 'дт', 'жшщхцч', 'зс', 'л', 'м', 'н']
@@ -12,24 +14,29 @@ key = ['р', 'бп', 'вф', 'гк', 'дт', 'жшщхцч', 'зс', 'л', 'м',
 # key = ['н', 'кх', 'лмр', 'т', 'чг', 'п', 'шж', 'с', 'вб', 'дз']
 # key = ['л', 'н', 'вф', 'р', 'ч', 'пб', 'шжщ', 'сз', 'м', 'дт']
 
+if len(key) != 10:
+    raise Exception('key должен содержать ровно 10 элементов')
+
+
 # Читаем словарь
 
 dictName = 'dictionary.txt'  # Unicode only
 
 dictionarysource = []
 dictPath = os.path.join(os.path.dirname(os.path.realpath(__file__)), dictName)
-with open(dictPath, 'r', encoding='utf') as file:
-    for word in file.readlines():
-        dictionarysource.append(''.join(word.split()))
-dictionary = set([x.lower() for x in dictionarysource])  # Удаляем дубликаты
+
+def loadDictionary():
+    with open(dictPath, 'r', encoding='utf') as file:
+        for word in file.readlines():
+            dictionarysource.append(''.join(word.split()))
+    dictionary = set([x.lower() for x in dictionarysource])  # Удаляем повторы
+    return dictionary
 
 
 def selectWordsByKey(number, key, dictionary):
     '''
     Выбираем слова в соответствии с кодом
     '''
-    if len(str(number)) > 4:
-        print('Это может быть долго, если что, грохните терминал')
     chars = []
     for n in str(number):
         chars.append(key[int(n)])
@@ -51,11 +58,17 @@ for i in range(len(key)):
     print(i, key[i])
 
 while True:
-    print('-' * 80)
-    print('Введите числа')
+
+    dictionary = loadDictionary()
+
+    print('-' * 10 + 'Введите числа или слова' + '-' * 9)
     inputstr = input()
 
-    # Тестовый режим
+    if inputstr.isdigit() and len(inputstr) > 4:
+        print('Что-то происходит...')
+
+
+    # Режим проверки ключа
 
     if inputstr == 'test':
 
@@ -89,9 +102,11 @@ while True:
             for char in tuple(keychar):
                 keyfreqs[keychar] += freqs[char]
 
+        print('\nОтносительная частотность ключа:')
         for c in key:
             print(c + '\t', '#' * round((keyfreqs[c]) * 10))
 
+        print('\nПроверка покрытия:')
         testnumbers = range(0, 1000)
         emptycombs = []
         for i in testnumbers:
@@ -101,10 +116,41 @@ while True:
                 print(emptycombs[-1])
         print('Код не покрывает', len(emptycombs), 'из', len(testnumbers),
               'чисел от 0 до 1000')
-        break
+        continue
 
+    # Режим пополнения словаря
 
-    # Собственно, кодирование
+    if inputstr and inputstr.split()[0] == 'add':
+
+        with open(dictPath, 'a', encoding='utf') as file:
+            file.write('\n' + inputstr.split()[1])
+        print('слово добавлено в словарь')
+        dictionary = loadDictionary()  # Перезагружаем словарь
+        print()
+        continue
+
+    # Режим декодирования
+
+    if inputstr and not inputstr[0].isdigit():
+            print()
+            numbers = []
+            numbersstring = ''
+            for word in inputstr.split():
+                number = ''
+                for character in word.lower():
+                    for element in key:
+                        if character in set(element):
+                            number = ''.join((number, str(key.index(element))))
+                numbers.append(number)
+                numbersstring = ''.join((numbersstring, number, ' '))
+            if not numbersstring.split():
+                print('ключ не содержит подходящих букв')
+            else:
+                print(numbersstring)
+            print()
+            continue
+
+    # Режим кодирования
 
     numbers = re.findall('[0-9]+', inputstr)
     numbers = list(filter(lambda x: x != '', numbers))
@@ -113,10 +159,19 @@ while True:
         print()
         selectedWords = selectWordsByKey(number, key, dictionary)[0]
         if not selectedWords:
-            print('Похоже, у меня нет подходящих слов')
+            print('Похоже, у меня нет слов на буквах')
+            print(selectWordsByKey(number, key, dictionary)[1])
+            print('чтобы добавить новое слово в словарь,\nиспользуйте конструкцию "add слово"')
         else:
             print(number)
-            selectedWords.sort()
-            print(', '.join(selectedWords))
+            nrand = 12  # Число случайных слов
+            if len(selectedWords) > nrand:
+                randSelectedWords = [selectedWords.pop(random.randrange(0,
+                                    len(selectedWords))) for x in range(nrand)]
+                print('выборка', nrand, '/', len(selectedWords),'случайный слов:')
+            else:
+                randSelectedWords = selectedWords
+            randSelectedWords.sort()
+            print(', '.join(randSelectedWords))
 
     print()
