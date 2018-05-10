@@ -5,6 +5,7 @@ import os
 import itertools
 import re
 import random
+import difflib
 
 
 key = ['р', 'бп', 'вф', 'гк', 'дт', 'жшщхцч', 'зс', 'л', 'м', 'н']
@@ -70,7 +71,7 @@ while True:
 
     # Режим проверки ключа
 
-    if inputstr == 'test':
+    if inputstr.lower() == 'test':
 
         freqs = {
         'б': 0.159,
@@ -120,12 +121,24 @@ while True:
 
     # Режим пополнения словаря
 
-    if inputstr and inputstr.split()[0] == 'add':
+    if inputstr and inputstr.split()[0].lower() == 'add':
 
         with open(dictPath, 'a', encoding='utf') as file:
             file.write('\n' + inputstr.split()[1])
+        print()
         print('слово добавлено в словарь')
         dictionary = loadDictionary()  # Перезагружаем словарь
+        print()
+        continue
+
+    # Режим поиска похожих слов
+
+    if inputstr and inputstr.split()[0].lower() == 'sim':
+
+        print()
+        print('Похожие слова (до 12 шт.):')
+        for word in inputstr.split()[1:]:
+            print(difflib.get_close_matches(word, dictionary, 12))
         print()
         continue
 
