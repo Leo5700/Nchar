@@ -133,7 +133,7 @@ while True:
 
     # Режим поиска похожих слов
 
-    if inputstr and inputstr.split()[0].lower() == 'sim':
+    if inputstr and inputstr.split()[0].lower() in ['s', 'sim']:
 
         print()
         print('Похожие слова (до 12 шт.):')
