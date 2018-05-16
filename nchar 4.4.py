@@ -18,7 +18,6 @@ key = ['р', 'бп', 'вф', 'гк', 'дт', 'жшщхцч', 'зс', 'л', 'м',
 if len(key) != 10:
     raise Exception('key должен содержать ровно 10 элементов')
 
-
 # Читаем словарь
 
 dictName = 'dictionary.txt'  # Unicode only
@@ -32,7 +31,6 @@ def loadDictionary():
             dictionarysource.append(''.join(word.split()))
     dictionary = set([x.lower() for x in dictionarysource])  # Удаляем повторы
     return dictionary
-
 
 def selectWordsByKey(number, key, dictionary):
     '''
@@ -52,7 +50,6 @@ def selectWordsByKey(number, key, dictionary):
                 selectedWords.append(word)
     return selectedWords, chars
 
-
 # Выводим диалог
 
 for i in range(len(key)):
@@ -65,13 +62,25 @@ while True:
     print('-' * 10 + 'Введите числа или слова' + '-' * 9)
     inputstr = input()
 
-    if inputstr.isdigit() and len(inputstr) > 4:
-        print('Что-то происходит...')
+    # Режим повтора предыдущего ввода
 
+    if inputstr.lower() in ['r', 'rep']:
+        try:
+            inputstr = prewinputstr
+        except NameError:
+            print()
+            print('Предыдущих команд не найдено')
+            continue
+    prewinputstr = inputstr
+
+    # Предупреждение о длительном процессе
+
+    if inputstr.isdigit() and len(inputstr) > 4:
+        print('Что-то происходит... Для чисел > 99999 это будет долго')
 
     # Режим проверки ключа
 
-    if inputstr.lower() == 'test':
+    if inputstr.lower() in ['t', 'test']:
 
         freqs = {
         'б': 0.159,
@@ -95,7 +104,6 @@ while True:
         'ш': 0.073,
         'щ': 0.036
         }
-
 
         keyfreqs = {}
         for keychar in key:
@@ -121,19 +129,19 @@ while True:
 
     # Режим пополнения словаря
 
-    if inputstr and inputstr.split()[0].lower() == 'add':
+    if inputstr and inputstr.split()[0].lower() in ['a', 'add']:
 
         with open(dictPath, 'a', encoding='utf') as file:
             file.write('\n' + inputstr.split()[1])
         print()
-        print('слово добавлено в словарь')
+        print('Слово добавлено в словарь')
         dictionary = loadDictionary()  # Перезагружаем словарь
         print()
         continue
 
     # Режим поиска похожих слов
 
-    if inputstr and inputstr.split()[0].lower() == 'sim':
+    if inputstr and inputstr.split()[0].lower() in ['s', 'sim']:
 
         print()
         print('Похожие слова (до 12 шт.):')
@@ -157,7 +165,7 @@ while True:
                 numbers.append(number)
                 numbersstring = ''.join((numbersstring, number, ' '))
             if not numbersstring.split():
-                print('ключ не содержит подходящих букв')
+                print('Ключ не содержит подходящих букв')
             else:
                 print(numbersstring)
             print()
@@ -174,14 +182,14 @@ while True:
         if not selectedWords:
             print('Похоже, у меня нет слов на буквах')
             print(selectWordsByKey(number, key, dictionary)[1])
-            print('чтобы добавить новое слово в словарь,\nиспользуйте конструкцию "add слово"')
+            print('Чтобы добавить новое слово в словарь,\nиспользуйте конструкцию "add слово"')
         else:
             print(number)
             nrand = 12  # Число случайных слов
             if len(selectedWords) > nrand:
                 randSelectedWords = [selectedWords.pop(random.randrange(0,
                                     len(selectedWords))) for x in range(nrand)]
-                print('выборка', nrand, '/', len(selectedWords),'случайный слов:')
+                print('Выборка', nrand, '/', len(selectedWords),'случайный слов:')
             else:
                 randSelectedWords = selectedWords
             randSelectedWords.sort()
