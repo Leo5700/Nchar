@@ -55,6 +55,8 @@ def selectWordsByKey(number, key, dictionary):
 for i in range(len(key)):
     print(i, key[i])
 
+print('r -- повторить ввод \ns -- поиск похожих слов \na -- добавить слово \nt -- тестировать словарь')
+    
 while True:
 
     dictionary = loadDictionary()
