@@ -1,5 +1,11 @@
+
+
+
 git clone https://github.com/Leo5700/numchar.git
 cd numchar
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 
 git pull origin
 git add .
