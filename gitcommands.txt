@@ -1,6 +1,3 @@
-
-
-
 git clone https://github.com/Leo5700/numchar.git
 cd numchar
 
